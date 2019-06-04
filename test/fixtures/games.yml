@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  min_player: 1
+  max_player: 1
+  time: 1
+  image_id: MyString
+  team: false
+
+two:
+  name: MyString
+  min_player: 1
+  max_player: 1
+  time: 1
+  image_id: MyString
+  team: false
