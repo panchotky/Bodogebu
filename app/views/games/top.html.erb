@@ -1,2 +1,92 @@
-<h1>Games#top</h1>
-<p>Find me in app/views/games/top.html.erb</p>
+<div id="sampleCarousel" class="carousel slide" data-ride="carousel">
+	<ol class="carousel-indicators">
+		<li class="active" data-target="#sampleCarousel" data-slide-to="0"></li>
+		<li data-target="#sampleCarousel" data-slide-to="1"></li>
+		<li data-target="#sampleCarousel" data-slide-to="2"></li>
+	</ol>
+	<div class="carousel-inner" role="listbox">
+		<div class="item one active">
+			<img src="assets/top_katan.jpg" alt="First slide">
+		</div>
+		<div class="item two">
+			<img src="assets/top_store.jpg" alt="Second slide">
+		</div>
+		<div class="item three">
+			<img src="assets/top_ex.jpg" alt="Third slide">
+		</div>
+	</div>
+	<a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">前へ</span>
+	</a>
+	<a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">次へ</span>
+	</a>
+</div>
+
+<div class="top_title">
+  <h1>〜 ボードゲームの世界へようこそ 〜</h1>
+</div>
+
+<div class="about_link">
+  <a data-toggle="modal" data-target="#about-modal">
+	<h1>About ボドゲ部</h1>
+  </a>
+</div>
+
+<!-- モーダル・ダイアログ -->
+<div class="modal fade" id="about-modal" tabindex="-1">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				<h4 class="modal-title">ボドゲ部へようこそ！！<br>
+				「探す」「レビュー」「ライブラリ」機能の紹介をします。</h4>
+			</div>
+			<div class="modal-body row">
+
+
+			  <div class="col-lg-4">
+			  	  <div class="about-head">
+			  	    <p>「探す」</p>
+			      </div>
+			      <div class="about-body">
+			        <p>人数と所用時間からおすすめのボードゲームを探すことができます。<br>レーダーチャートにより、ゲームの特性がわかるようになっています。<br>
+			        レーダーチャートの評価や所用時間はプレイヤーのレビューから算出されています。
+			        </p>
+			      </div>
+			  </div>
+
+			   <div class="col-lg-4 about-center">
+			  	  <div class="about-head">
+			  	    <p>「レビュー」</p>
+			      </div>
+			      <div class="about-body">
+			        <p>遊んだボードゲームのレビューができます。<br>
+			           レビューをすると、レーダーチャートに評価が反映されます。<br>
+			           また、ライブラリに記録が残り、いつでも振り返ることができます。</p>
+			      </div>
+			  </div>
+
+			   <div class="col-lg-4">
+			  	  <div class="about-head">
+			  	    <p>「ライブラリ」</p>
+			      </div>
+			      <div class="about-body">
+			        <p>今までにレビューしたゲームが登録されています。<br>
+			           また、気に入ったゲームは「お気に入り」登録ができ、すぐに確認することができます。</p>
+			      </div>
+			  </div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
