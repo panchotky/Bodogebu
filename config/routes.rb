@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
 
-  # deviseが自動作成してくれるルーティング
-  devise_for :users
+  # deviseのコントローラーをUser下に設置したのでルーティングの変更
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  } 
+
+  devise_scope :user do
+    get "sign_in", :to => "users/sessions#new"
+    get "sign_out", :to => "users/sessions#destroy" 
+  end
+
 
   # ルートパスをTOP画面に指定
   root to: 'games#top'
