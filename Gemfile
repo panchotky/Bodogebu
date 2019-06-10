@@ -74,3 +74,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  gem 'bootstrap-sass'
 #ページャー作成用
  gem 'kaminari'
+
+gem 'pry-byebug', group: :development
+gem 'pry-rails'

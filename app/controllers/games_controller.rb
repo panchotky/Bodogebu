@@ -3,6 +3,16 @@ class GamesController < ApplicationController
   end
 
   def new
+      @game = Game.new
+  end
+
+  def create
+      @game = Game.new(game_params)
+      if @game.save
+       redirect_to new_game_review_path(@game.id)
+      else
+        render :new
+      end
   end
 
   def search
@@ -22,4 +32,12 @@ class GamesController < ApplicationController
 
   def edit
   end
+
+
+  private
+
+    def game_params
+          params.require(:game).permit(:name, :min_player, :max_player, :image, :team)
+    end
+
 end

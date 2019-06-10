@@ -8,6 +8,6 @@ class Game < ApplicationRecord
   validates :name, uniqueness:true
   validates :min_player, presence:true
   validates :max_player, presence:true
-  validates :image_id, presence:true
+  validates :image, presence:true
 
 end
