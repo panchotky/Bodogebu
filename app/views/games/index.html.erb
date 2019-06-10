@@ -1,2 +1,31 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<div class="container">
+	<div class="row">
+
+　　　　<h1>登録ゲーム一覧</h1>
+
+          <table class="table">
+		  	   <thead>
+		  	   	      <tr>
+		  	   	      	  <th>パッケージ</th>
+		  	   	      	  <th>ゲーム名</th>
+		  	   	      	  <th>詳細</th>
+		  	   	      	  <th>おすすめ度</th>
+		  	   	      	  <th>削除</th>
+		  	   	      </tr>
+		  	   </thead>
+
+	        <% @games.each do |game| %>
+		  	   <tbody>
+		  	   	      <tr>
+		  	   	      	  <th><%= attachment_image_tag game, :image, :fill, 80, 80 %></th>
+		  	   	      	  <th><%= game.name %></th>
+		  	   	      	  <th> <%= link_to '編集', game_path(game.id), class: "btn btn-success btn-xs" %></th>
+		  	   	      	  <th><%= recommend_avarage(game) %></th>
+		  	   	      	  <th><%= link_to '削除', game_path(game.id), method: :delete, "data-confirm" => "本当に削除してもいいですか。", class: "btn btn-danger btn-xs" %></th>
+		  	   	      </tr>
+		  	   </tbody>
+	   		<% end %>
+	     </table>
+
+    </div>
+</div>
