@@ -4,7 +4,7 @@
     <title>Bodogebu</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -22,12 +22,12 @@
       <div class="collapse navbar-collapse" id="header">
           <ul class="nav navbar-nav btn-ignore">
             <li class="link-btn"><a href="/" class="btn-text-3d">探す</a></li>
-            <li class="link-btn"><a href="#" class="btn-text-3d">レビュー</a></li>
+            <li class="link-btn"><a href="/games/new" class="btn-text-3d">レビュー</a></li>
             <li class="link-btn"><a href="#" class="btn-text-3d">ライブラリ</a></li>
           </ul>
 
-          <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
-          <!-- ログアウト　ようこそ〜○○様 -->
+           <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき
+ -->          <!-- ログアウト　ようこそ〜○○様 -->
             <div class="nav navbar-nav navbar-right nav-menu">
               <p class="welcome-message">ようこそ <%= current_user.name %> さん</p>
               <div class="logout">

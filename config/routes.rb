@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
-  } 
+  }
 
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
-    get "sign_out", :to => "users/sessions#destroy" 
+    get "sign_out", :to => "users/sessions#destroy"
   end
 
 
@@ -19,17 +19,17 @@ Rails.application.routes.draw do
   resources :inquiries, only: [:new, :create, :show, :index]
   get 'inquiries/confirm'
 
-  # reviewsコントローラ
-  resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
-  get 'reviews/unification_view'
-  get 'reviews/unification'
-
   # gamesコントローラ
-  resources :games
   get 'games/top'
   get 'games/search'
   get 'games/search_name'
   get 'games/reviews'
+  resources :games do
+      # reviewsコントローラ レビューのURLに親ゲームのIDを持たせられるようにネストさせる
+    resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
+  end
+    get 'reviews/unification_view'
+    get 'reviews/unification'
 
   # usersコントローラ
   resources :users, only: [:index, :show, :edit, :update, :destroy]

@@ -1,2 +1,114 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<body class="new-review">
+<div class="container">
+
+  <div class="row text-center">
+
+
+    <div class="game-title">
+  	  <h2><%= @game.name %></h2>
+    </div>
+
+    <div class="game-image">
+  	  <%= attachment_image_tag @game, :image, :fill, 300, 300 %>
+    </div>
+
+    <% if @review.errors.any? %>
+    　　<div id="error_explanation">
+    　　<h2><%= @review.errors.count %>件のエラーが発生しました。</h2>
+    　　<ul>
+    　　<% @review.errors.full_messages.each do |message| %>
+    　　　　<li><%= message %></li>
+    　　<% end %>
+    　　</ul>
+    　　</div>
+    <% end %>
+
+  </div>
+
+  <div class="row">
+
+  	<div class="col-lg-3">
+  	</div>
+
+  	<div class="col-lg-6 shadow-box">
+
+      
+
+
+	<%= form_for [@game, @review] do |f| %>
+
+			<div class="float clearfix">
+				  <%= f.label :player, 'プレイ人数' %>
+				  <%= f.number_field :player, min: 1, value: 1 %>人
+		    </div>
+		    <div class="float clearfix">
+				  <%= f.label :play_time, '所要時間' %>
+				  <%= f.number_field :play_time, min: 1, value: 1 %>分
+		    </div>
+		    <div class="float clearfix">
+				  <%= f.label :recommend, 'おすすめ度（１〜５）' %>
+				  <%= f.number_field :recommend, min: 1, max: 5, value: 1 %>
+			</div>
+
+			<table class="table review-table">
+						<thead>
+							<tr>
+								<th>ゲーム特性（１〜５）</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th><%= f.label :strategy, '戦略性' %>
+				  					<%= f.number_field :strategy, min: 1, max: 5, value: 1 %></th>
+							</tr>
+							<tr>
+								<th> <%= f.label :luck, '運要素' %>
+									 <%= f.number_field :luck, min: 1, max: 5, value: 1 %></th>
+							</tr>
+							<tr>
+								<th><%= f.label :quick, '素早さ' %>
+							       	<%= f.number_field :quick, min: 1, max: 5, value: 1 %></th>
+							</tr>
+							<tr>
+								<th><%= f.label :memory, '記憶力' %>
+								    <%= f.number_field :memory, min: 1, max: 5, value: 1 %></th>
+							</tr>
+							<tr>
+								<th><%= f.label :talk, 'トーク力' %>
+				 				    <%= f.number_field :talk, min: 1, max: 5, value: 1 %></th>
+							</tr>
+                            <tr>
+								<th><%= f.label :psychology, '心理推理力' %>
+				                    <%= f.number_field :psychology, min: 1, max: 5, value: 1 %></th>
+							</tr>
+						</tbody>
+			</table>
+
+			<div class="form-group">
+		        <p><%= f.label :comment, 'コメント' %></p>
+		    	<%= f.text_area :comment, class: "form-control", placeholder:"コメントがあれば入力して下さい。" %>
+			</div>
+
+			<%= f.submit "レビュー投稿", class: "btn btn-default"%>
+			
+			</div>
+　　　　　　　
+　　　　　　
+
+		<% end %>
+
+			</div>
+
+　　　　　　　
+
+  	</div>
+
+  	<div class="col-lg-3">
+  	</div>
+
+
+
+  </div>
+
+</div>
+</body>

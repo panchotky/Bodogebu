@@ -82,3 +82,32 @@ a.btn-text-3d { color: white; }
 	margin-bottom: none !important;
 }
 
+input[type="number"] {
+        width: 35px;
+        height: 20px;
+        border-radius: 4px;
+    }
+
+.form-group {
+	margin-bottom: 50px;
+}
+
+.shadow-box {
+	box-shadow:0px 0px 10px maroon;
+    border:1px solid #000;
+    padding: 30px;
+    margin: 50px 0px;
+}
+
+.float {
+	float: left;
+	margin-right: 35px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
