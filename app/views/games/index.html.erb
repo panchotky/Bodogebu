@@ -19,7 +19,7 @@
 		  	   	      <tr>
 		  	   	      	  <th><%= attachment_image_tag game, :image, :fill, 80, 80 %></th>
 		  	   	      	  <th><%= game.name %></th>
-		  	   	      	  <th> <%= link_to '編集', game_path(game.id), class: "btn btn-success btn-xs" %></th>
+		  	   	      	  <th> <%= link_to '詳細', game_path(game.id), class: "btn btn-success btn-xs" %></th>
 		  	   	      	  <th><%= recommend_avarage(game) %></th>
 		  	   	      	  <th><%= link_to '削除', game_path(game.id), method: :delete, "data-confirm" => "本当に削除してもいいですか。", class: "btn btn-danger btn-xs" %></th>
 		  	   	      </tr>

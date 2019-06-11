@@ -1,2 +1,47 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<div class="container">
+
+	<div class="row text-center show-title">
+		<h2><%= @game.name %></h2>
+    </div>
+
+
+    <div class="row show-container">
+
+    	<div class="col-lg-2">
+    	</div>
+
+    	<div class="col-lg-4">
+    		<%= attachment_image_tag @game, :image, :fill, 300, 300 %>
+    	</div>
+
+    	<div class="col-lg-4 text-center">
+    		<p>おすすめ度<%= recommend_avarage(@game) %>（<%= @game.reviews.count %>人）</p>
+    	</div>
+
+    	<div class="col-lg-2">
+    	</div>
+
+    </div>
+
+    <div class="row">
+
+    	<div class="col-lg-3">
+    	</div>
+
+    	<div class="col-lg-6 info-container">
+	    	<p>プレイ可能人数：<%= @game.min_player %>人　〜　<%= @game.max_player %>人</p>
+	    	<p>平均プレイ時間：<%= play_time_avarage(@game) %>分</p>
+	    	<% if @game.team == true %>
+	    		<p>プレイ種別：チーム戦</p>
+	    	<else>
+	    		<p>プレイ種別：個人戦</p>
+	    	<% end %>
+	        <p>コメント：（<%= @game.reviews.count { |i| i != "" } %>件）</p>
+	    </div>
+
+	    <div class="col-lg-3">
+	    </div>
+    </div>
+
+
+</div>
