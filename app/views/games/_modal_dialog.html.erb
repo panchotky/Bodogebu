@@ -1,0 +1,21 @@
+<!-- モーダル・ダイアログ -->
+<div class="modal fade" id="review-modal" tabindex="-1">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      <h4 class="modal-title">ゲーム名を入力して下さい。</h4>
+    </div>
+    <div class="modal-body">
+      <%= search_form_for search, url: games_search_name_path, class:"search form-inline" do |f| %>
+          <%= f.label :name_cont, 'ゲーム名（部分検索可）', class:"control-label" %>
+          <%= f.search_field :name_cont, class:"form-control field", placeholder:"英数は半角で入力して下さい。" %>
+            <span class="input-group-btn"><%= button_tag sanitize('<i class="glyphicon glyphicon-search"></i>'), :type => "submit",:class =>"btn  btn-info" %></span>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+    </div>
+  </div>
+</div>
+</div>

@@ -36,7 +36,7 @@
 	    	<else>
 	    		<p>プレイ種別：個人戦</p>
 	    	<% end %>
-	        <p>コメント：（<%= @game.reviews.count { |i| i != "" } %>件）</p>
+	        <p>コメント：（<%= @game.reviews.where.not(comment:nil).count %>件）</p>
 	    </div>
 
 	    <div class="col-lg-3">
