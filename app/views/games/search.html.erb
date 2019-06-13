@@ -1,3 +1,100 @@
-<h1>Games#search</h1>
-<p>Find me in app/views/games/search.html.erb</p>
+<div class="container">
+	<div class="row search-page-top">
+
+      <% @games.each do |game| %>
+
+        <div class="col-lg-4 text-center">
+
+        	<%= link_to game_path(game.id) do %>
+	        	<p class="search-game-title"><%= game.name %></p>
+	        	<div class="search-game-container">
+		        	<%= attachment_image_tag game, :image, :fill, 200, 200 %>
+		            <div class="chart-container clearfix">
+
+		            	 <canvas id="<%= game.id %>" width="200" height="200"></canvas>
+	                     <script>
+
+								// 色の設定
+								var colorSet = {
+									red: 'rgb(255, 99, 132)',
+									orange: 'rgb(255, 159, 64)',
+									yellow: 'rgb(255, 205, 86)',
+									green: 'rgb(75, 192, 192)',
+									blue: 'rgb(54, 162, 235)',
+									purple: 'rgb(153, 102, 255)',
+									grey: 'rgb(201, 203, 207)'
+								};
+
+								// 乱数生成(0～100)
+								var rnd100 = function(){
+									return Math.round(Math.random() * 100);
+								};
+
+								// 色のRGB変換
+								var color = Chart.helpers.color;
+
+								/*
+								 * チャートの初期設定
+								 */
+								var config = {
+									type: 'radar',
+									data: {
+										labels: ["月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜"],
+										datasets: [{
+											label: false,
+											backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
+											borderColor: colorSet.red,
+											pointBackgroundColor: colorSet.red,
+											data: [1, 2, 3, 5, 2, 3, 5]
+										},]
+									},
+									options: {
+										animation:false,
+										showTooltips: false,
+										legend: { position: 'bottom' },
+										scale: {
+											display: true,
+											pointLabels: {
+												fontSize: 15,
+												fontColor: colorSet.yellow
+											},
+											ticks: {
+												display: true,
+												fontSize: 12,
+												fontColor: colorSet.green,
+												min: 0,
+												max: 5,
+												beginAtZero: true
+											},
+											gridLines: {
+												display: true,
+												color: colorSet.yellow
+											}
+										}
+									}
+								};
+
+								/*
+								 * チャートの作成
+								 */
+								var myRadar = new Chart($("#<%= game.id %>"), config);
+	                     </script>
+
+
+		            </div>
+		        </div>
+	        <% end %>
+
+        </div>
+
+      <% end %>
+
+     
+
+
+
+	</div>
+</div>
 <%= render 'games/modal_dialog', search: @search %>
+
+

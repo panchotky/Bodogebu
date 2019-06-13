@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// TOP画面
 .item {
     height: 600px;
     position: relative;
@@ -21,6 +23,12 @@
 
 .carousel-caption {
     top :20px;
+}
+
+.top-container {
+	position: absolute;
+	right: 30%;
+	top: 100px;
 }
 
 .top_title {
@@ -75,6 +83,28 @@
 	margin-top: 50px;
 }
 
+
+// 探す結果表示画面
+.search-game-container {
+	position: relative;
+}
+
+.chart-container {
+	width: 200px;
+	height: 200px;
+	border: 1px solid;
+	position: absolute;
+	right: 22%;
+}
+
+.search-game-title {
+	margin-top: 250px;
+}
+
+.search-page-top {
+	margin-top: -200px;
+	margin-bottom: 250px;
+}
 
 
 

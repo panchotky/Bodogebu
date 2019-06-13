@@ -77,3 +77,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-byebug', group: :development
 gem 'pry-rails'
+gem 'chart-js-rails', '~> 0.1.4'
