@@ -1,3 +1,90 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<div class="container">
+
+
+  <div class="row text-center">
+    <div class="game-title">
+  	  <h2><%= @review.game %></h2>
+    </div>
+    <div class="game-image">
+  	  <%= attachment_image_tag @review.game, :image, :fill, 300, 300 %>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+  	<div class="col-lg-3">
+  	</div>
+
+  	<div class="col-lg-6 shadow-box">
+
+        <div class=new-review-title>
+			<div class="float clearfix">
+				  <span>プレイ人数</span>
+				  <%= @review.player %>人
+		    </div>
+		    <div class="float clearfix">
+				  <span>所要時間</span>
+				  <%= @review.play_time %>分
+		    </div>
+		    <div class="float clearfix">
+				  <span>おすすめ度(1~5)</span>
+				  <%= @review.recommend %>
+			</div>
+		</div>
+
+		<div class="review-table">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ゲーム特性(1~5)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th><span>戦略性</span>
+		  					<%= @review.strategy %></th>
+					</tr>
+					<tr>
+						<th> <span>運要素</span>
+							 <%= @review.luck %></th>
+					</tr>
+					<tr>
+						<th><span>素早さ</span>
+							 <%= @review.quick %></th>
+					</tr>
+					<tr>
+						<th><span>記憶力</span>
+							 <%= @review.memory %></th>
+					</tr>
+					<tr>
+						<th><span>トーク力</span>
+							 <%= @review.talk %></th>
+					</tr>
+                    <tr>
+						<th><span>心理推理力</span>
+							 <%= @review.psychology %></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="form-group">
+		        <span>コメント</span>
+				<%= @review.comment %>
+		</div>
+
+　　　　　　　
+
+  	</div>
+
+  	<div class="col-lg-3">
+  	</div>
+
+
+
+  </div>
+
+</div>
+</body>
 <%= render 'games/modal_dialog', search: @search %>

@@ -2,9 +2,10 @@ class GamesController < ApplicationController
   def top
   end
 
-  def new
-      @game = Game.new
-  end
+# ゲーム新規登録画面はレビュー検索結果に統合
+  # def new
+  #     @game = Game.new
+  # end
 
   def create
       @game = Game.new(game_params)
@@ -16,9 +17,11 @@ class GamesController < ApplicationController
   end
 
   def search
+      @games = Game.all
   end
 
   def search_name
+      @game = Game.new
   end
 
   def index
