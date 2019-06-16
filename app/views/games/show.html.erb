@@ -15,7 +15,80 @@
     	</div>
 
     	<div class="col-lg-4 text-center">
-    		<p>おすすめ度<%= recommend_avarage(@game) %>（<%= @game.reviews.count %>人）</p>
+            <canvas id="<%= @game.id %>" width="200" height="200"></canvas>
+            <script>
+
+                // 色の設定
+                var colorSet = {
+                    red: 'rgb(255, 99, 132)',
+                    orange: 'rgb(255, 159, 64)',
+                    yellow: 'rgb(255, 205, 86)',
+                    green: 'rgb(75, 192, 192)',
+                    blue: 'rgb(54, 162, 235)',
+                    purple: 'rgb(153, 102, 255)',
+                    grey: 'rgb(201, 203, 207)'
+                };
+
+                // 乱数生成(0～100)
+                var rnd100 = function(){
+                    return Math.round(Math.random() * 100);
+                };
+
+                // 色のRGB変換
+                var color = Chart.helpers.color;
+
+                /*
+                 * チャートの初期設定
+                 */
+                var config = {
+                    type: 'radar',
+                    data: {
+                        labels: ["戦略", "運", "記憶", "トーク", "速度", "心理", "発想"],
+                        datasets: [{
+                            label: false,
+                            backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
+                            borderColor: colorSet.red,
+                            pointBackgroundColor: colorSet.red,
+                            data: [<%= strategy_avarage(@game) %>, <%= luck_avarage(@game) %>, 
+                                   <%= memory_avarage(@game) %>, <%= talk_avarage(@game) %>, 
+                                   <%= quick_avarage(@game) %>, <%= psychology_avarage(@game) %>, 3]
+                        },]
+                    },
+                    options: {
+                        animation:false,
+                        showTooltips: false,
+                        legend: { display: false },
+                        scale: {
+                            display: true,
+                            pointLabels: {
+                                fontSize: 15,
+                                fontColor: colorSet.yellow
+                            },
+                            ticks: {
+                                display: true,
+                                fontSize: 12,
+                                fontColor: colorSet.green,
+                                min: 0,
+                                max: 5,
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                display: true,
+                                color: colorSet.yellow
+                            }
+                        }
+                    }
+                };
+
+                /*
+                 * チャートの作成
+                 */
+                var myRadar = new Chart($("#<%= @game.id %>"), config);
+             </script>
+
+            <a data-toggle="modal" data-target="#recommend-modal">
+    		  <p>おすすめ度<%= recommend_avarage(@game) %>（<%= @game.reviews.count %>人）</p>
+            </a>
     	</div>
 
     	<div class="col-lg-2">
@@ -36,7 +109,10 @@
 	    	<else>
 	    		<p>プレイ種別：個人戦</p>
 	    	<% end %>
-	        <p>コメント：（<%= @game.reviews.where.not(comment:nil).count %>件）</p>
+
+            <a data-toggle="modal" data-target="#comment-modal">
+	          <p>コメント：（<%= @game.reviews.where.not(comment: "").count %>件）</p>
+            </a>
 	    </div>
 
 	    <div class="col-lg-3">
@@ -45,3 +121,75 @@
 
 
 </div>
+
+
+
+
+<!-- おすすめモーダル・ダイアログ -->
+<div class="modal fade" id="recommend-modal" tabindex="-1">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      <h4 class="modal-title">評価したプレーヤー</h4>
+    </div>
+    <div class="modal-body">
+      <% @game.reviews.each do |review| %>
+         <%= link_to game_review_path(@game,review.id) do %>
+             <%= attachment_image_tag review.user, :image, :fill, 100, 100, fallback: '/images/no_image.jpg' %>
+             <%= review.user.name %>
+         <% end %>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- コメントモーダル・ダイアログ -->
+<div class="modal fade" id="comment-modal" tabindex="-1">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+      <h4 class="modal-title">コメント一覧</h4>
+    </div>
+    <div class="modal-body">
+
+      <table class="table">
+
+            <thead>
+                <tr>
+                    <th>ユーザー</th>
+                    <th>コメント</th>
+                </tr>
+            </thead>
+
+            <% @game.reviews.where.not(comment: "").each do |review| %>
+            <tbody>
+                <tr>
+                    <%= link_to user_path(review.user.id) do %>
+                        <th><%= attachment_image_tag review.user, :image, :fill, 100, 100, fallback: '/images/no_image.jpg' %></th>
+                        <th><%= review.comment %></th>
+                    <% end %>
+                </tr>
+            </tbody>
+            <% end %>
+      </table>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- headerのモーダルダイアログ -->
+<%= render 'games/modal_dialog', search: @search %>
+
+
+
+

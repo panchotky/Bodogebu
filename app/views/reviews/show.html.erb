@@ -3,7 +3,7 @@
 
   <div class="row text-center">
     <div class="game-title">
-  	  <h2><%= @review.game %></h2>
+  	  <h2><%= @review.game.name %></h2>
     </div>
     <div class="game-image">
   	  <%= attachment_image_tag @review.game, :image, :fill, 300, 300 %>
@@ -18,7 +18,12 @@
 
   	<div class="col-lg-6 shadow-box">
 
-        <div class=new-review-title>
+  		<h4 class="text-center review-user">
+  			<%= link_to user_path(@review.user.id) do %>
+  			<%= @review.user.name %>
+  			<% end %>さんのレビュー</h4>
+
+        <div class="show-review-title">
 			<div class="float clearfix">
 				  <span>プレイ人数</span>
 				  <%= @review.player %>人
@@ -71,7 +76,7 @@
 
 		<div class="form-group">
 		        <span>コメント</span>
-				<%= @review.comment %>
+				<p><%= @review.comment %></p>
 		</div>
 
 　　　　　　　

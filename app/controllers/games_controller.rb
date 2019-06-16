@@ -30,7 +30,11 @@ class GamesController < ApplicationController
 
   def show
       @game = Game.find(params[:id])
+      p '@game'
+      p @game
       @reviews = @game.reviews.all
+      p '@game.reviews.where.not(comment:nil)'
+      p @game.reviews.where.not(comment:nil)
   end
 
   def reviews
