@@ -39,19 +39,21 @@
 								var config = {
 									type: 'radar',
 									data: {
-										labels: ["月曜", "火曜", "水曜", "木曜", "金曜", "土曜", "日曜"],
+										labels: ["戦略", "運", "記憶", "トーク", "速度", "心理"],
 										datasets: [{
 											label: false,
 											backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
 											borderColor: colorSet.red,
 											pointBackgroundColor: colorSet.red,
-											data: [1, 2, 3, 5, 2, 3, 5]
+											data: [<%= strategy_avarage(game) %>, <%= luck_avarage(game) %>, 
+											       <%= memory_avarage(game) %>, <%= talk_avarage(game) %>, 
+											       <%= quick_avarage(game) %>, <%= psychology_avarage(game) %>]
 										},]
 									},
 									options: {
 										animation:false,
 										showTooltips: false,
-										legend: { position: 'bottom' },
+										legend: { display: false },
 										scale: {
 											display: true,
 											pointLabels: {
