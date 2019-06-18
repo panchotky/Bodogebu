@@ -10,6 +10,7 @@ class Review < ApplicationRecord
   validates :talk,       presence: true
   validates :quick,      presence: true
   validates :psychology, presence: true
+  validates :imagination, presence: true
   validates :play_time,  presence: true
 
 end

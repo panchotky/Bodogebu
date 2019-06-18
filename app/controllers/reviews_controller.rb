@@ -11,6 +11,8 @@ class ReviewsController < ApplicationController
   	  @review.user_id = current_user.id
       @review.game_id = @game.id
       if @review.save
+         @game.time = view_context.play_time_avarage(@game)
+         @game.save
          redirect_to user_path(current_user.id)
       else
          @game = Game.find(params[:game_id])
@@ -33,7 +35,7 @@ class ReviewsController < ApplicationController
 
       def review_params
           params.require(:review).permit(:game_id, :user_id, :recommend, :strategy, :luck, :memory, :talk,
-                                         :quick, :psychology, :play_time, :comment, :favorite, :player)
+                                         :quick, :psychology, :imagination, :play_time, :comment, :favorite, :player)
       end
 
 end
