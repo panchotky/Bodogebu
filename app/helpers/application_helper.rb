@@ -17,8 +17,6 @@ module ApplicationHelper
          play_time = play_time + review.play_time
        end
        return (play_time.to_f/reviews.count).round(2)
-
-       
    end
 
    def strategy_avarage(game)
@@ -28,8 +26,6 @@ module ApplicationHelper
          strategy = strategy + review.strategy
        end
        return (strategy.to_f/reviews.count).round(2)
-
-       
    end
 
    def luck_avarage(game)
@@ -39,8 +35,6 @@ module ApplicationHelper
          luck = luck + review.luck
        end
        return (luck.to_f/reviews.count).round(2)
-
-       
    end
 
    def memory_avarage(game)
@@ -50,8 +44,6 @@ module ApplicationHelper
          memory = memory + review.memory
        end
        return (memory.to_f/reviews.count).round(2)
-
-       
    end
 
    def quick_avarage(game)
@@ -61,8 +53,6 @@ module ApplicationHelper
          quick = quick + review.quick
        end
        return (quick.to_f/reviews.count).round(2)
-
-       
    end
 
    def talk_avarage(game)
@@ -72,8 +62,6 @@ module ApplicationHelper
          talk = talk + review.talk
        end
        return (talk.to_f/reviews.count).round(2)
-
-       
    end
 
    def psychology_avarage(game)
@@ -83,8 +71,15 @@ module ApplicationHelper
          psychology = psychology + review.psychology
        end
        return (psychology.to_f/reviews.count).round(2)
+   end
 
-       
+   def imagination_avarage(game)
+       reviews = game.reviews
+       imagination = 0
+       reviews.each do |review|
+         imagination = imagination + review.imagination
+       end
+       return (imagination.to_f/reviews.count).round(2)
    end
 
 end

@@ -62,27 +62,45 @@
 						<tbody>
 							<tr>
 								<th><%= f.label :strategy, '戦略性' %>
-				  					<%= f.number_field :strategy, min: 1, max: 5, value: 1 %></th>
+				  					<%= f.number_field :strategy, min: 1, max: 5, value: 1 %>
+				  					<span class="review-info">作戦を立てたり、頭を使って考えたりする重要性</span>
+				  				</th>
 							</tr>
 							<tr>
 								<th> <%= f.label :luck, '運要素' %>
-									 <%= f.number_field :luck, min: 1, max: 5, value: 1 %></th>
+									 <%= f.number_field :luck, min: 1, max: 5, value: 1 %>
+									 <span class="review-info">勝敗に運がどれくらい関与するか</span>
+								</th>
 							</tr>
 							<tr>
 								<th><%= f.label :quick, '素早さ' %>
-							       	<%= f.number_field :quick, min: 1, max: 5, value: 1 %></th>
+							       	<%= f.number_field :quick, min: 1, max: 5, value: 1 %>
+							       	<span class="review-info">短い時間で考えたり、瞬時に行動したりする重要性</span>
+							    </th>
 							</tr>
 							<tr>
 								<th><%= f.label :memory, '記憶力' %>
-								    <%= f.number_field :memory, min: 1, max: 5, value: 1 %></th>
+								    <%= f.number_field :memory, min: 1, max: 5, value: 1 %>
+								    <span class="review-info">覚える力の重要性</span>
+								</th>
 							</tr>
 							<tr>
 								<th><%= f.label :talk, 'トーク力' %>
-				 				    <%= f.number_field :talk, min: 1, max: 5, value: 1 %></th>
+				 				    <%= f.number_field :talk, min: 1, max: 5, value: 1 %>
+				 				    <span class="review-info">嘘や推理したことを述べる力の重要性</span>
+				 				</th>
 							</tr>
                             <tr>
 								<th><%= f.label :psychology, '心理推理力' %>
-				                    <%= f.number_field :psychology, min: 1, max: 5, value: 1 %></th>
+				                    <%= f.number_field :psychology, min: 1, max: 5, value: 1 %>
+				                    <span class="review-info">相手の心理を読む力の重要性</span>
+				                </th>
+							</tr>
+							<tr>
+								<th><%= f.label :imagination, '発想力' %>
+				                    <%= f.number_field :imagination, min: 1, max: 5, value: 1 %>
+				                    <span class="review-info">機転をきかせたり、ユーモアを使ったりする重要性</span>
+				                </th>
 							</tr>
 						</tbody>
 			</table>

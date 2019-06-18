@@ -39,7 +39,7 @@
 								var config = {
 									type: 'radar',
 									data: {
-										labels: ["戦略", "運", "記憶", "トーク", "速度", "心理"],
+										labels: ["戦略", "運", "記憶", "トーク", "速度", "心理", "発想"],
 										datasets: [{
 											label: false,
 											backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
@@ -47,7 +47,8 @@
 											pointBackgroundColor: colorSet.red,
 											data: [<%= strategy_avarage(game) %>, <%= luck_avarage(game) %>, 
 											       <%= memory_avarage(game) %>, <%= talk_avarage(game) %>, 
-											       <%= quick_avarage(game) %>, <%= psychology_avarage(game) %>]
+											       <%= quick_avarage(game) %>, <%= psychology_avarage(game) %>, 
+											       <%= imagination_avarage(game) %>]
 										},]
 									},
 									options: {
