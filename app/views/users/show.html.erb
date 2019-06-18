@@ -1,3 +1,60 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+
+	<div class="row text-center">
+		<h2><%= @user.name %> の Library</h2>
+		<%= link_to "プロフィール編集", edit_user_path(@user.id), class:"btn btn-default" %>
+	</div>
+
+	<div class="row">     
+       <div class="col-lg-2">
+       </div>
+
+       <div class="col-lg-8 my-info shodow-box">
+       	 <%= attachment_image_tag @user, :image, :fill, 100, 100 %>
+       	 <%= @user.introduce %>
+       </div>
+
+       <div class="col-lg-2">
+       </div>
+    </div>
+
+    <div class="row">
+		<div class="wrap">
+			<div id="tab-menu" class="clearfix">
+				<span class="btn btn-default"><a href="#tab1" class="active">お気に入り（件）</a></span>
+				<span class="btn btn-default"><a href="#tab2" class="">レビュー（<%= @user.reviews.count %> 件）</a></span>
+			</div>
+
+			<div id="tab-contents" class="clearfix">
+
+				<!-- お気に入り一覧 -->
+				<div id="tab1" class="tab">
+					<p>TAB1のテキストが入ります。TAB1のテキストが入ります。TAB1のテキストが入ります。TAB1のテキストが入ります。</p>
+				</div>
+
+                <!-- レビュー一覧 -->
+				<div id="tab2" class="tab text-center">
+					<% @user.reviews.each do |review| %>
+					    <div class="col-lg-3 game-container">
+					    	<%= link_to game_path(review.game.id) do %>
+								<%= attachment_image_tag review.game, :image, :fill, 200, 200 %>
+								<p><%= review.game.name %></br>
+							<% end %>
+						    <%= link_to "レビュー詳細", game_review_path(review.game.id,review.id), class:"btn btn-default" %>
+							</p>
+						</div>
+					<% end %>
+				</div>
+
+			</div>
+		</div>
+    </div>
+
+
+
+</div>
+
+<!-- tabのjs読み込み -->
+<%= javascript_include_tag "application.js" %>
+<!-- headerのモーダルダイアログ -->
 <%= render 'games/modal_dialog', search: @search %>
