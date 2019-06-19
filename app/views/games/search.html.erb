@@ -1,5 +1,17 @@
-<div class="container">
-	<div class="row search-page-top">
+<div class="container search-page-top">
+
+  <div class="row">
+		<h3>検索ワード：
+            <% if params[:q].present? && params[:q][:name_cont].present? %>
+			    <%= params[:q][:name_cont] %>
+			<% else %>
+			    記入なし（ゲーム名を入れて検索して下さい。）
+			<% end %>
+	    </h3>
+  </div>
+
+  <!-- 検索結果が存在すれば、該当するものを一覧で表示する -->
+  <% if @search_games.present? %>
 
       <% @games.each do |game| %>
 
@@ -92,7 +104,7 @@
 
       <% end %>
 
-     
+  <% end %>
 
 
 

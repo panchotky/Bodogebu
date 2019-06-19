@@ -6,14 +6,14 @@
     <h3>もう一度検索し直したい場合は、上のレビューボタンから再度入力して下さい。</h3>
 
     <% if @game.errors.any? %>
-    　　<div id="error_explanation">
-    　　<h2><%= @game.errors.count %>件のエラーが発生しました。</h2>
-    　　<ul>
-    　　<% @game.errors.full_messages.each do |message| %>
-    　　　　<li><%= message %></li>
-    　　<% end %>
-    　　</ul>
-    　　</div>
+       <div id="error_explanation">
+       <h2><%= @game.errors.count %>件のエラーが発生しました。</h2>
+       <ul>
+       <% @game.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+       </ul>
+       </div>
     <% end %>
 
   </div>

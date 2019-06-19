@@ -75,9 +75,16 @@
 		</div>
 
 		<div class="form-group">
-		        <span>コメント</span>
-				<p><%= @review.comment %></p>
+	        <span>コメント</span>
+			<p><%= @review.comment %></p>
 		</div>
+
+        <!-- レビューを書いた本人がアクセスしたら、編集ボタンを表示する -->
+		<% if @review.user == current_user %>
+			<%= link_to "レビュー編集", edit_game_review_path(@review.game.id,@review.id), class: "btn btn-success btn-sm"%>
+		<% else %>
+		<% end %>
+
 
 　　　　　　　
 

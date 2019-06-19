@@ -60,3 +60,52 @@ h1{
 .game-container {
 	margin-top: 30px;
 }
+
+// 探す結果表示画面
+.search-game-container {
+	position: relative;
+}
+
+.chart-container {
+	width: 200px;
+	height: 200px;
+	border: 1px solid;
+	position: absolute;
+	right: 20.5%;
+}
+
+.search-game-title {
+	margin-top: 250px;
+}
+
+.user-favorite {
+	margin-top: -200px;
+	margin-bottom: 250px;
+}
+
+input[type="text"] {
+        width: 150px;
+        height: 30px;
+        border-radius: 4px;
+}
+
+.form-margin {
+	margin-bottom: 30px;
+}
+
+.float {
+	float: left;
+}
+
+.my-info {
+	position: relative;
+	padding-bottom: 60px !important;
+}
+
+.edit-bottan {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+}
+
+
