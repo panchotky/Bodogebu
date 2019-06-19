@@ -1,3 +1,17 @@
-<h1>Inquiries#confirm</h1>
-<p>Find me in app/views/inquiries/confirm.html.erb</p>
+<div class="container">
+
+	<div class="row text-center shadow-box">
+       <h2>お問い合わせ内容確認</h2>
+
+       <%= form_for(@inquiry) do |f| %>
+		 <%= f.hidden_field :title %>
+		 <%= @inquiry.title %>
+		 <%= f.hidden_field :body %>
+		 <%= @inquiry.body %>
+
+		 <%= f.submit '送信', :class => 'btn btn-primary' %>
+	   <% end %>
+    </div>
+
+</div>
 <%= render 'games/modal_dialog', search: @search %>

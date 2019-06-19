@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # inquiriesコントローラ
   resources :inquiries, only: [:new, :create, :show, :index]
   get 'inquiries/confirm'
+  post 'inquiries/confirm' => 'inquiries#confirm'
 
   # gamesコントローラ
   get 'games/top'

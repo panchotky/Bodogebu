@@ -3,33 +3,25 @@
 	<div class="row text-center shadow-box">
        <h2>お問い合わせ入力フォーム</h2>
 
-       <%= form_for(@inquiry) do |f| %>
+       <% if @inquiry.errors.any? %>
+	        <div id="error_explanation">
+	        <h2><%= @inquiry.errors.count %>件のエラーが発生しました。</h2>
+	        <ul>
+	        <% @inquiry.errors.full_messages.each do |message| %>
+	            <li><%= message %></li>
+	        <% end %>
+	        </ul>
+	        </div>
+   	    <% end %>
 
-       	<%= f.label :title, "タイトル" %>
-       	<%= f.>
-       	<%= f.label :body, "本文" %>
-
+       <%= form_for @inquiry, :url => inquiries_confirm_path do |f| %>
+		 <%= f.label :title, "タイトル" %>
+		 <%= f.text_field :title, class: "form-control" %>
+		 <%= f.label :body, "本文" %>
+		 <%= f.text_area :body, class: "form-control" %>
+		 <%= f.submit '確認', :class => 'btn btn-primary' %>
+	   <% end %>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 <%= render 'games/modal_dialog', search: @search %>
