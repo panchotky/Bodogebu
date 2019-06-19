@@ -35,14 +35,12 @@
            <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->
            <!-- ログアウト　ようこそ〜○○様 -->
             <div class="nav navbar-nav navbar-right nav-menu">
-              <p class="welcome-message">ようこそ <%= current_user.name %> さん</p>
-              <div class="logout">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-default" %>
-              </div>
+              <%= link_to "お問い合わせ", new_inquiry_path, class:"btn btn-default" %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-default" %>
             </div>
 
-
           <% elsif user_signed_in? && current_user.admin == true %><!--adminのとき-->
+          <!-- プルダウンメニュー -->
               <div class="btn-group admin-menu">
                   <button type="button" class="btn btn-default">
                     管理者メニュー
@@ -52,7 +50,7 @@
                   </button>
                   <ul class="dropdown-menu" role="menu">
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">・ゲーム名検索</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">・ユーザー一覧</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="/users">・ユーザー一覧</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="/games">・ゲーム一覧</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">・ゲームレビュー統合</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">・お問い合わせ確認</a></li>
@@ -66,14 +64,18 @@
               <%= link_to "会員登録", new_user_registration_path, class:"btn btn-default" %>
               <%= link_to "ログイン", new_user_session_path, class:"btn btn-default" %>
             </div>
-
           <% end %>
 
       </div>
-      <div class=header-margin>
-      </div>
+
     </div>
-　</nav>
+
+    <div class="white-container">
+       <p class="welcome-message">ようこそ <%= current_user.name %> さん</p>
+    </div>
+  </nav>
+
+
     <%= yield %>
   </body>
 </html>
