@@ -1,3 +1,39 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
-<%= render 'games/modal_dialog', search: @search %>
+<div class="container">
+
+	<div class="row text-center">
+		<h2>ユーザー情報編集</h2>
+
+		<% if @user.errors.any? %>
+	        <div id="error_explanation">
+	        <h2><%= @user.errors.count %>件のエラーが発生しました。</h2>
+	        <ul>
+	        <% @user.errors.full_messages.each do |message| %>
+	            <li><%= message %></li>
+	        <% end %>
+	        </ul>
+	        </div>
+   	    <% end %>
+
+	</div>
+
+	<div class="row">
+		<div class="col-lg-2">
+		</div>
+
+		<div class="col-lg-8 shadow-box">
+            <%= form_for(@user)do |f| %>
+                <%=f.label :name, 'ニックネーム' %>
+            	<%= f.text_field :name, class: "form-margin form-control", placeholder:"ニックネームを入力して下さい。" %>
+            	<%=f.label :image, 'ユーザー画像' %>
+            	<%= f.attachment_field :image, class: "image form-margin", id: "file" %>
+                <div id="img_field" onClick="$('#file').click()" ></div>
+                <%=f.label :introduce, '紹介文' %>
+            	<%= f.text_area :introduce, class: "form-margin form-control", placeholder:"紹介文を入力して下さい。" %>
+
+                <%= f.submit "ユーザー情報編集", class: "btn btn-primary"%>
+            <% end %>
+        </div>
+
+		<div class="col-lg-2">
+		</div>
+	</div>

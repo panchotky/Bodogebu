@@ -2,16 +2,23 @@
 
 	<div class="row text-center">
 		<h2><%= @user.name %> の Library</h2>
-		<%= link_to "プロフィール編集", edit_user_path(@user.id), class:"btn btn-default" %>
 	</div>
 
 	<div class="row">     
        <div class="col-lg-2">
        </div>
 
-       <div class="col-lg-8 my-info shodow-box">
-       	 <%= attachment_image_tag @user, :image, :fill, 100, 100 %>
-       	 <%= @user.introduce %>
+       <div class="col-lg-8 my-info shadow-box">
+       	 <div class="float">
+       		 <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: '/assets/no_image.jpg', size:'100x100' %>
+       	 </div>
+       	 <div class="float">
+       		 <p>紹介文</p>
+       		 <%= @user.introduce %>
+       	 </div>
+       	 <div class="edit-bottan">
+       		 <%= link_to "プロフィール編集", edit_user_path(@user.id), class:"btn btn-default" %>
+     	 </div>
        </div>
 
        <div class="col-lg-2">
@@ -21,15 +28,98 @@
     <div class="row">
 		<div class="wrap">
 			<div id="tab-menu" class="clearfix">
-				<span class="btn btn-default"><a href="#tab1" class="active">お気に入り（件）</a></span>
+				<span class="btn btn-default"><a href="#tab1" class="active">お気に入り（<%= @user.reviews.where(favorite: "true").count %> 件）</a></span>
 				<span class="btn btn-default"><a href="#tab2" class="">レビュー（<%= @user.reviews.count %> 件）</a></span>
 			</div>
 
 			<div id="tab-contents" class="clearfix">
 
 				<!-- お気に入り一覧 -->
-				<div id="tab1" class="tab">
-					<p>TAB1のテキストが入ります。TAB1のテキストが入ります。TAB1のテキストが入ります。TAB1のテキストが入ります。</p>
+				<div id="tab1" class="tab user-favorite">
+					<% @user.reviews.where(favorite: "true").each do |favorite| %>
+						<div class="col-lg-4 text-center">
+							<%= link_to game_path(favorite.game.id) do %>
+								<p class="search-game-title"><%= favorite.game.name %></p>
+								<div class="search-game-container">
+									<%= attachment_image_tag favorite.game, :image, :fill, 200, 200 %>
+									<div class="chart-container clearfix">
+
+										<canvas id="<%= favorite.game.id %>" width="200" height="200"></canvas>
+										<script>
+
+											// 色の設定
+											var colorSet = {
+											red: 'rgb(255, 99, 132)',
+											orange: 'rgb(255, 159, 64)',
+											yellow: 'rgb(255, 205, 86)',
+											green: 'rgb(75, 192, 192)',
+											blue: 'rgb(54, 162, 235)',
+											purple: 'rgb(153, 102, 255)',
+											grey: 'rgb(201, 203, 207)'
+											};
+
+											// 乱数生成(0～100)
+											var rnd100 = function(){
+											return Math.round(Math.random() * 100);
+											};
+
+											// 色のRGB変換
+											var color = Chart.helpers.color;
+
+											/*
+											* チャートの初期設定
+											*/
+											var config = {
+											type: 'radar',
+											data: {
+											labels: ["戦略", "運", "記憶", "トーク", "速度", "心理", "発想"],
+											datasets: [{
+											label: false,
+											backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
+											borderColor: colorSet.red,
+											pointBackgroundColor: colorSet.red,
+											data: [<%= strategy_avarage(favorite.game) %>, <%= luck_avarage(favorite.game) %>, 
+											<%= memory_avarage(favorite.game) %>, <%= talk_avarage(favorite.game) %>, 
+											<%= quick_avarage(favorite.game) %>, <%= psychology_avarage(favorite.game) %>, 
+											<%= imagination_avarage(favorite.game) %>]
+											},]
+											},
+											options: {
+											animation:false,
+											showTooltips: false,
+											legend: { display: false },
+											scale: {
+											display: true,
+											pointLabels: {
+											fontSize: 15,
+											fontColor: colorSet.yellow
+											},
+											ticks: {
+											display: true,
+											fontSize: 12,
+											fontColor: colorSet.green,
+											min: 0,
+											max: 5,
+											beginAtZero: true
+											},
+											gridLines: {
+											display: true,
+											color: colorSet.yellow
+											}
+											}
+											}
+											};
+
+											/*
+											* チャートの作成
+											*/
+											var myRadar = new Chart($("#<%= favorite.game.id %>"), config);
+										</script>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
 				</div>
 
                 <!-- レビュー一覧 -->
@@ -38,9 +128,9 @@
 					    <div class="col-lg-3 game-container">
 					    	<%= link_to game_path(review.game.id) do %>
 								<%= attachment_image_tag review.game, :image, :fill, 200, 200 %>
-								<p><%= review.game.name %></br>
+								<p><%= review.game.name %></p>
 							<% end %>
-						    <%= link_to "レビュー詳細", game_review_path(review.game.id,review.id), class:"btn btn-default" %>
+						    <p><%= link_to "レビュー詳細", game_review_path(review.game.id,review.id), class:"btn btn-default" %>
 							</p>
 						</div>
 					<% end %>

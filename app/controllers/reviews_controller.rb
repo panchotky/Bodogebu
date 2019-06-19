@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
          @game.save
          redirect_to user_path(current_user.id)
       else
-         @game = Game.find(params[:game_id])
       	 render :new
       end
   end
@@ -26,6 +25,20 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+      @review = Review.find(params[:id])
+      @game = Game.find(params[:game_id])
+  end
+
+  def update
+      @review = Review.find(params[:id])
+      @game = Game.find(params[:game_id])
+      if @review.update(review_params)
+         @game.time = view_context.play_time_avarage(@game)
+         @game.save
+         redirect_to user_path(current_user.id)
+      else
+         render :edit
+      end
   end
 
   def unification_view
