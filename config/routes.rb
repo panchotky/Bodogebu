@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   root to: 'games#top'
 
   # inquiriesコントローラ
-  resources :inquiries, only: [:new, :create, :show, :index]
+  resources :inquiries, only: [:new, :create, :show, :index, :update]
   get 'inquiries/confirm'
+  post 'inquiries/confirm' => 'inquiries#confirm'
 
   # gamesコントローラ
   get 'games/top'

@@ -1,35 +1,43 @@
 <div class="container">
+	<div class="row">
 
-	<div class="row text-center shadow-box">
-       <h2>お問い合わせ入力フォーム</h2>
+		<div class="col-lg-2">
+		</div>
 
-       <%= form_for(@inquiry) do |f| %>
+        <div class="col-lg-8">
+			<div class="row text-center shadow-box">
+		       <h2>お問い合わせ入力フォーム</h2>
 
-       	<%= f.label :title, "タイトル" %>
-       	<%= f.>
-       	<%= f.label :body, "本文" %>
+		       <% if @inquiry.errors.any? %>
+			        <div id="error_explanation">
+			        <h2><%= @inquiry.errors.count %>件のエラーが発生しました。</h2>
+			        <ul>
+			        <% @inquiry.errors.full_messages.each do |message| %>
+			            <li><%= message %></li>
+			        <% end %>
+			        </ul>
+			        </div>
+		   	    <% end %>
 
-    </div>
+		       <%= form_for @inquiry, :url => inquiries_confirm_path do |f| %>
+		         <div class="inquiry-form">
+					 <%= f.label :title, "タイトル" %>
+					 <%= f.text_field :title, class: "form-control" %>
+				 </div>
+			     <div class="inquiry-form">
+					 <%= f.label :body, "本文" %>
+					 <%= f.text_area :body, class: "form-control" %>
+				 </div>
+				 <div class="inquiry-form">
+					 <%= f.submit '確認', :class => 'btn btn-primary' %>
+			     </div>
+			   <% end %>
+		    </div>
+		</div>
 
+	    <div class="col-lg-2">
+		</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	</div>
 </div>
 <%= render 'games/modal_dialog', search: @search %>
