@@ -1,3 +1,42 @@
-<h1>Inquiries#show</h1>
-<p>Find me in app/views/inquiries/show.html.erb</p>
+<div class="container">
+	<div class="row">
+
+		<div class="col-lg-2">
+		</div>
+
+
+        <div class="col-lg-8">
+			<div class="row text-center shadow-box">
+		       <h3>お問い合わせ内容 詳細</h3>
+
+		         <%= form_for(@inquiry) do |f| %>
+			         <div class="inquiry-form">
+			         	 <%= f.label "投稿者名：" %>
+						 <%= @inquiry.user.name %>
+					 </div>
+			         <div class="inquiry-form">
+			         	 <%= f.label "タイトル：" %>
+						 <%= @inquiry.title %>
+					 </div>
+					 <div class="inquiry-form">
+					     <%= f.label "本文" %><br>
+						 <%= @inquiry.body %>
+				     </div>
+
+		        
+			         <div class="inquiry-form">
+					 	  <%= f.radio_button :check, "true", {:checked => false} %> 対応済み
+					 </div>
+
+			         <div class="inquiry-form">
+						 <%= f.submit "更新", class: "btn btn-default"%>
+				     </div>
+			     <% end %>
+		    </div>
+
+		<div class="col-lg-2">
+		</div>
+
+	</div>
+</div>
 <%= render 'games/modal_dialog', search: @search %>

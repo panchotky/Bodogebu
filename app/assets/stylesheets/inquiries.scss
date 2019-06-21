@@ -1,3 +1,13 @@
 // Place all the styles related to the inquiries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.inquiry-form {
+	margin: 30px auto;
+}
+
+input[type="text"] {
+        width: 100% !important;
+        height: 40px;
+        border-radius: 4px;
+    }

@@ -4,14 +4,23 @@
        <h2>お問い合わせ内容確認</h2>
 
        <%= form_for(@inquiry) do |f| %>
-		 <%= f.hidden_field :title %>
-		 <%= @inquiry.title %>
-		 <%= f.hidden_field :body %>
-		 <%= @inquiry.body %>
+         <div class="inquiry-form">
+         	 <%= f.label "タイトル" %><br>
+			 <%= f.hidden_field :title %>
+			 <%= @inquiry.title %>
+		 </div>
+		 <div class="inquiry-form">
+		     <%= f.label "本文" %><br>
+			 <%= f.hidden_field :body %>
+			 <%= @inquiry.body %>
+	     </div>
 
-		 <%= f.submit '送信', :class => 'btn btn-primary' %>
+         <div class="inquiry-form">
+		 	<%= f.submit '送信', :class => 'btn btn-primary' %>
+		 </div>
 	   <% end %>
     </div>
 
 </div>
 <%= render 'games/modal_dialog', search: @search %>
+

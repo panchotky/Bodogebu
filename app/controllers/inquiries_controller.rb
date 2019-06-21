@@ -22,9 +22,17 @@ class InquiriesController < ApplicationController
   end
 
   def index
+      @inquiries = Inquiry.all
   end
 
   def show
+      @inquiry = Inquiry.find(params[:id])
+  end
+
+  def update
+      @inquiry = Inquiry.find(params[:id])
+      @inquiry.update(params_inquiry)
+      redirect_to inquiries_path
   end
 
 
