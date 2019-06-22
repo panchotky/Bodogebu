@@ -4,7 +4,7 @@
 		<h2><%= @user.name %> の Library</h2>
 	</div>
 
-	<div class="row">     
+	<div class="row">
        <div class="col-lg-2">
        </div>
 
@@ -31,114 +31,135 @@
 				<span class="btn btn-default"><a href="#tab1" class="active">お気に入り（<%= @user.reviews.where(favorite: "true").count %> 件）</a></span>
 				<span class="btn btn-default"><a href="#tab2" class="">レビュー（<%= @user.reviews.count %> 件）</a></span>
 			</div>
+    </div>
 
-			<div id="tab-contents" class="clearfix">
+    <div class="row">
+		<div id="tab-contents" class="clearfix">
 
-				<!-- お気に入り一覧 -->
-				<div id="tab1" class="tab user-favorite">
-					<% @user.reviews.where(favorite: "true").each do |favorite| %>
-						<div class="col-lg-4 text-center">
-							<%= link_to game_path(favorite.game.id) do %>
-								<p class="search-game-title"><%= favorite.game.name %></p>
-								<div class="search-game-container">
-									<%= attachment_image_tag favorite.game, :image, :fill, 200, 200 %>
-									<div class="chart-container clearfix">
+			<!-- お気に入り一覧 -->
+			<div id="tab1" class="tab user-favorite">
+				
+			<table class="table search-game-table">
+		  	   <thead>
+		  	   	      <tr>
+		  	   	      	  <th>ゲーム名</th>
+		  	   	      	  <th>ゲーム特性</th>
+		  	   	      	  <th>おすすめ度</th>
+		  	   	      	  <th>プレイ可能人数</th>
+		  	   	      	  <th>平均プレイ時間</th>
+		  	   	      </tr>
+		  	   </thead>
+               
+               <% @user.reviews.where(favorite: "true").each do |favorite| %>
+               <tbody>
+		  	   	      <tr>
+		  	   	      	  <th class="game-image">
+                            <%= link_to game_path(favorite.game.id) do%>
+			  	   	      	  	<%= attachment_image_tag favorite.game, :image, :fill, 200, 200 %>
+			  	   	      	  	<p><%= favorite.game.name %></p>
+			  	   	      	<% end %>
+		  	   	      	  </th>
+		  	   	      	  <th class="game-chart">
+		  	   	      	  	  <div class="chart-container">
+		  	   	      	  	  <canvas id="<%= favorite.game.id %>" width="200" height="200"></canvas>
+	                          <script>
 
-										<canvas id="<%= favorite.game.id %>" width="200" height="200"></canvas>
-										<script>
+								// 色の設定
+								var colorSet = {
+									red: 'rgb(255, 99, 132)',
+									orange: 'rgb(255, 159, 64)',
+									yellow: 'rgb(255, 205, 86)',
+									green: 'rgb(75, 192, 192)',
+									blue: 'rgb(54, 162, 235)',
+									purple: 'rgb(153, 102, 255)',
+									grey: 'rgb(201, 203, 207)'
+								};
 
-											// 色の設定
-											var colorSet = {
-											red: 'rgb(255, 99, 132)',
-											orange: 'rgb(255, 159, 64)',
-											yellow: 'rgb(255, 205, 86)',
-											green: 'rgb(75, 192, 192)',
-											blue: 'rgb(54, 162, 235)',
-											purple: 'rgb(153, 102, 255)',
-											grey: 'rgb(201, 203, 207)'
-											};
+								// 乱数生成(0～100)
+								var rnd100 = function(){
+									return Math.round(Math.random() * 100);
+								};
 
-											// 乱数生成(0～100)
-											var rnd100 = function(){
-											return Math.round(Math.random() * 100);
-											};
+								// 色のRGB変換
+								var color = Chart.helpers.color;
 
-											// 色のRGB変換
-											var color = Chart.helpers.color;
-
-											/*
-											* チャートの初期設定
-											*/
-											var config = {
-											type: 'radar',
-											data: {
-											labels: ["戦略", "運", "記憶", "トーク", "速度", "心理", "発想"],
-											datasets: [{
+								/*
+								 * チャートの初期設定
+								 */
+								var config = {
+									type: 'radar',
+									data: {
+										labels: ["戦略", "運", "記憶", "トーク", "速度", "心理", "発想"],
+										datasets: [{
 											label: false,
 											backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
 											borderColor: colorSet.red,
 											pointBackgroundColor: colorSet.red,
 											data: [<%= strategy_avarage(favorite.game) %>, <%= luck_avarage(favorite.game) %>, 
-											<%= memory_avarage(favorite.game) %>, <%= talk_avarage(favorite.game) %>, 
-											<%= quick_avarage(favorite.game) %>, <%= psychology_avarage(favorite.game) %>, 
-											<%= imagination_avarage(favorite.game) %>]
-											},]
-											},
-											options: {
-											animation:false,
-											showTooltips: false,
-											legend: { display: false },
-											scale: {
+											       <%= memory_avarage(favorite.game) %>, <%= talk_avarage(favorite.game) %>, 
+											       <%= quick_avarage(favorite.game) %>, <%= psychology_avarage(favorite.game) %>, 
+											       <%= imagination_avarage(favorite.game) %>]
+										},]
+									},
+									options: {
+										animation:false,
+										showTooltips: false,
+										legend: { display: false },
+										scale: {
 											display: true,
 											pointLabels: {
-											fontSize: 15,
-											fontColor: colorSet.yellow
+												fontSize: 15,
+												fontColor: colorSet.yellow
 											},
 											ticks: {
-											display: true,
-											fontSize: 12,
-											fontColor: colorSet.green,
-											min: 0,
-											max: 5,
-											beginAtZero: true
+												display: true,
+												fontSize: 12,
+												fontColor: colorSet.green,
+												min: 0,
+												max: 5,
+												beginAtZero: true
 											},
 											gridLines: {
-											display: true,
-											color: colorSet.yellow
+												display: true,
+												color: colorSet.yellow
 											}
-											}
-											}
-											};
+										}
+									}
+								};
 
-											/*
-											* チャートの作成
-											*/
-											var myRadar = new Chart($("#<%= favorite.game.id %>"), config);
-										</script>
-									</div>
-								</div>
-							<% end %>
-						</div>
-					<% end %>
-				</div>
-
-                <!-- レビュー一覧 -->
-				<div id="tab2" class="tab text-center">
-					<% @user.reviews.each do |review| %>
-					    <div class="col-lg-3 game-container">
-					    	<%= link_to game_path(review.game.id) do %>
-								<%= attachment_image_tag review.game, :image, :fill, 200, 200 %>
-								<p><%= review.game.name %></p>
-							<% end %>
-						    <p><%= link_to "レビュー詳細", game_review_path(review.game.id,review.id), class:"btn btn-default" %>
-							</p>
-						</div>
-					<% end %>
-				</div>
-
+								/*
+								 * チャートの作成
+								 */
+								var myRadar = new Chart($("#<%= favorite.game.id %>"), config);
+	                           </script>
+	                           </div>
+		  	   	      	  </th>
+		  	   	      	  <th><%= recommend_avarage(favorite.game) %></th>
+		  	   	      	  <th><%= favorite.game.min_player %>人 〜 <%= favorite.game.max_player %>人</th>
+		  	   	      	  <th><%= favorite.game.time %>分</th>
+		  	   	      </tr>
+		  	   </tbody>
+	           <% end %>
+	        </table>
 			</div>
+
+            <!-- レビュー一覧 -->
+			<div id="tab2" class="tab text-center">
+				<% @user.reviews.each do |review| %>
+				    <div class="col-lg-3 game-container">
+				    	<%= link_to game_path(review.game.id) do %>
+							<%= attachment_image_tag review.game, :image, :fill, 200, 200 %>
+							<p><%= review.game.name %></p>
+						<% end %>
+					    <p><%= link_to "レビュー詳細", game_review_path(review.game.id,review.id), class:"btn btn-default" %>
+						</p>
+					</div>
+				<% end %>
+			</div>
+
 		</div>
-    </div>
+	</div>
+
 
 
 

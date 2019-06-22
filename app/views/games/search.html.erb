@@ -1,6 +1,6 @@
 <div class="container search-page-top">
 
-  <div class="row">
+  <div class="row search-word">
 		<h3>検索ワード：
             <% if params[:q].present? && params[:q][:name_cont].present? %>
 			    <%= params[:q][:name_cont] %>
@@ -10,21 +10,35 @@
 	    </h3>
   </div>
 
+
+  <div class="row">
   <!-- 検索結果が存在すれば、該当するものを一覧で表示する -->
   <% if @search_games.present? %>
-
-      <% @games.each do |game| %>
-
-        <div class="col-lg-4 text-center">
-
-        	<%= link_to game_path(game.id) do %>
-	        	<p class="search-game-title"><%= game.name %></p>
-	        	<div class="search-game-container">
-		        	<%= attachment_image_tag game, :image, :fill, 200, 200 %>
-		            <div class="chart-container clearfix">
-
-		            	 <canvas id="<%= game.id %>" width="200" height="200"></canvas>
-	                     <script>
+      
+      <table class="table search-game-table">
+		  	   <thead>
+		  	   	      <tr>
+		  	   	      	  <th>ゲーム名</th>
+		  	   	      	  <th>ゲーム特性</th>
+		  	   	      	  <th>おすすめ度</th>
+		  	   	      	  <th>プレイ可能人数</th>
+		  	   	      	  <th>平均プレイ時間</th>
+		  	   	      </tr>
+		  	   </thead>
+               
+               <% @games.each do |game| %>
+               <tbody>
+		  	   	      <tr>
+		  	   	      	  <th class="game-image">
+                            <%= link_to game_path(game.id) do%>
+			  	   	      	  	<%= attachment_image_tag game, :image, :fill, 200, 200 %>
+			  	   	      	  	<p><%= game.name %></p>
+			  	   	      	<% end %>
+		  	   	      	  </th>
+		  	   	      	  <th class="game-chart">
+		  	   	      	  	  <div class="chart-container">
+		  	   	      	  	  <canvas id="<%= game.id %>" width="200" height="200"></canvas>
+	                          <script>
 
 								// 色の設定
 								var colorSet = {
@@ -93,22 +107,20 @@
 								 * チャートの作成
 								 */
 								var myRadar = new Chart($("#<%= game.id %>"), config);
-	                     </script>
-
-
-		            </div>
-		        </div>
-	        <% end %>
-
-        </div>
-
-      <% end %>
+	                           </script>
+	                           </div>
+		  	   	      	  </th>
+		  	   	      	  <th><%= recommend_avarage(game) %></th>
+		  	   	      	  <th><%= game.min_player %>人 〜 <%= game.max_player %>人</th>
+		  	   	      	  <th><%= game.time %>分</th>
+		  	   	      </tr>
+		  	   </tbody>
+	           <% end %>
+	  </table>
 
   <% end %>
+  </div>
 
-
-
-	</div>
 </div>
 <%= render 'games/modal_dialog', search: @search %>
 

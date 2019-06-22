@@ -59,32 +59,38 @@ h1{
 
 .game-container {
 	margin-top: 30px;
+	margin-bottom: 20px;
+	border-bottom: 5px solid gray;
 }
 
 // 探す結果表示画面
-.search-game-container {
-	position: relative;
-}
-
 .chart-container {
 	width: 200px;
 	height: 200px;
-	border: 1px solid;
-	position: absolute;
-	right: 20.5%;
+	left: 0px;
+	border-radius: 8px;
 }
 
-.search-game-title {
-	margin-top: 250px;
+
+.game-image {
+	width: 250px;
 }
 
-.user-favorite {
-	margin-top: -200px;
-	margin-bottom: 250px;
+.game-chart {
+	width: 250px;
+}
+
+.search-word {
+	margin-bottom: 50px;
+}
+
+.search-game-table {
+	text-align: center;
+	font-size: 18px;
 }
 
 input[type="text"] {
-        width: 150px;
+        width: 200px !important;
         height: 30px;
         border-radius: 4px;
 }

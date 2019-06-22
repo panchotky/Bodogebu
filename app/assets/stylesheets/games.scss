@@ -84,33 +84,32 @@
 }
 
 
-// 探す結果表示画面
-.search-game-container {
-	position: relative;
-}
+// // 探す結果表示画面
 
 .chart-container {
 	width: 200px;
 	height: 200px;
-	border: 1px solid;
-	position: absolute;
-	right: 20.5%;
-}
-
-.search-game-title {
-	margin-top: 250px;
-}
-
-.search-page-top {
-	margin-top: -200px;
-	margin-bottom: 250px;
+	left: 0px;
+	border-radius: 8px;
 }
 
 
-.page-title {
+.game-image {
+	width: 250px;
+}
+
+.game-chart {
+	width: 250px;
+}
+
+.search-word {
 	margin-bottom: 50px;
 }
 
+.search-game-table {
+	text-align: center;
+	font-size: 18px;
+}
 
 
 
