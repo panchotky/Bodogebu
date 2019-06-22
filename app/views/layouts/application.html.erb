@@ -71,7 +71,9 @@
     </div>
 
     <div class="white-container">
+       <% if user_signed_in? %>
        <p class="welcome-message">ようこそ <%= current_user.name %> さん</p>
+       <% end %>
     </div>
   </nav>
 
