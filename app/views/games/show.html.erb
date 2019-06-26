@@ -145,12 +145,14 @@
       <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
       <h4 class="modal-title">評価したプレーヤー</h4>
     </div>
-    <div class="modal-body">
+    <div class="modal-body clearfix">
       <% @game.reviews.each do |review| %>
-         <%= link_to game_review_path(@game,review.id) do %>
-             <%= attachment_image_tag review.user, :image, :fill, 100, 100, fallback: '/images/no_image.jpg' %>
-             <%= review.user.name %>
-         <% end %>
+         <div class="user-container text-center">
+             <%= link_to user_path(review.user.id) do %>
+                 <%= attachment_image_tag review.user, :image, :fill, 100, 100, fallback: '/assets/no_image.jpg', size:'100x100' %><br>
+                 <%= review.user.name %>
+             <% end %>
+         </div>
       <% end %>
     </div>
     <div class="modal-footer">
@@ -183,7 +185,7 @@
             <tbody>
                 <tr>
                     <%= link_to user_path(review.user.id) do %>
-                        <th><%= attachment_image_tag review.user, :image, :fill, 100, 100, fallback: '/images/no_image.jpg' %></th>
+                        <th><%= attachment_image_tag review.user, :image, :fill, 100, 100, fallback: '/assets/no_image.jpg', size:'100x100' %></th>
                         <th><%= review.comment %></th>
                     <% end %>
                 </tr>

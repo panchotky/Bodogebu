@@ -20,7 +20,7 @@
   <% if @time_search_games.present? %>
       
       <table class="table search-game-table">
-		  	   <thead>
+		  	   <thead >
 		  	   	      <tr>
 		  	   	      	  <th>ゲーム名</th>
 		  	   	      	  <th>ゲーム特性</th>
@@ -112,7 +112,14 @@
 								 */
 								var myRadar = new Chart($("#<%= game.id %>"), config);
 	                           </script>
-	                           </div>
+
+	                           <% if game.team == true %>
+		                           <div class="text-center team-label">チーム</div>
+		                           </div>
+		                       <% else %>
+		                           <div class="text-center alone-label">個人</div>
+		                           </div>
+		                       <% end %>
 		  	   	      	  </th>
 		  	   	      	  <th><%= recommend_avarage(game) %></th>
 		  	   	      	  <th><%= game.min_player %>人 〜 <%= game.max_player %>人</th>

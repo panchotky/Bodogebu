@@ -3,7 +3,7 @@
 
      <h2 class="page-title">お問い合わせ一覧</h2>
 
-          <table class="table">
+          <table class="table inquiry-table">
 		  	   <thead>
 		  	   	      <tr>
 		  	   	      	  <th>ユーザー名</th>
@@ -18,12 +18,12 @@
 		  	   	      <tr>
 		  	   	      	  <th><%= inquiry.user.name %></th>
 		  	   	      	  <th><%= inquiry.title %></th>
-		  	   	      	  <th><%= link_to '詳細', inquiry_path(inquiry.id), class: "btn btn-success btn-xs" %></th>
+		  	   	      	  <th><%= link_to '詳細', inquiry_path(inquiry.id), class: "btn btn-success btn-sm" %></th>
 		  	   	      	  <th>
-		  	   	      	  	  <% if inquiry.check = false %>
-		  	   	      	  	    <p class="btn btn-primary btn-xs">対応済</p>
-		  	   	      	  	  <% else %>
-		  	   	      	  	    <p class="btn btn-danger btn-xs">未対応</p>
+		  	   	      	  	  <% if inquiry.check == true %>
+		  	   	      	  	    <p class="btn btn-primary btn-sm">対応済</p>
+		  	   	      	  	  <% elsif inquiry.check == false %>
+		  	   	      	  	    <p class="btn btn-danger btn-sm">未対応</p>
 		  	   	      	  	  <% end %>
 		  	   	      	  </th>
 		  	   	      </tr>

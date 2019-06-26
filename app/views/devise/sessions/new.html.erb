@@ -1,10 +1,11 @@
+<body class="sign-in">
 <div class="container">
   <div class="row text-center">
 
     <div class="col-lg-3">
     </div>
 
-    <div class="col-lg-6 shadow-box">
+    <div class="col-lg-6 shadow-box white">
       <h2>ログイン</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -29,8 +30,10 @@
           <%= f.submit "Log in", class: "btn btn-success" %>
         </div>
       <% end %>
+    </div>
 
 
   </div>
 </div>
+</body>>
 <%= render 'games/modal_dialog', search: @search %>

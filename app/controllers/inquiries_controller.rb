@@ -41,7 +41,7 @@ class InquiriesController < ApplicationController
   private
 
       def params_inquiry
-          params.require(:inquiry).permit(:title, :body, :user_id)
+          params.require(:inquiry).permit(:title, :body, :user_id, :check)
       end
 
       def require_admin
