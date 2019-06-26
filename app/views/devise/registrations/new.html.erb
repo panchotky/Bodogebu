@@ -13,7 +13,7 @@
 
       <div class="sign-up-field">
         <%= f.label :name, "ニックネーム" %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "ニックネーム" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "ニックネーム", class: "form-text" %>
       </div>
 
       <div class="sign-up-field">
@@ -21,12 +21,12 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> 文字以上)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-text" %>
       </div>
 
       <div class="sign-up-field">
         <%= f.label :password_confirmation, "パスワード確認" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-text" %>
       </div>
 
       <div class="actions sign-up-field">
