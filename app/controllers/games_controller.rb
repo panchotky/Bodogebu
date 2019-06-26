@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
 
+   before_action :require_admin, only: [:index, :edit, :update, :destroy]
+
   def top
   end
 
@@ -23,7 +25,6 @@ class GamesController < ApplicationController
   end
 
   def search_name
-    p params
       @game = Game.new
   end
 
@@ -52,6 +53,18 @@ class GamesController < ApplicationController
 
     def game_params
           params.require(:game).permit(:name, :min_player, :max_player, :image, :team, :time)
+    end
+
+    def require_admin
+              if user_signed_in?
+
+                  if current_user.admin?
+                  else
+                     redirect_to root_path
+                  end
+              else
+                redirect_to root_path
+              end
     end
 
 end

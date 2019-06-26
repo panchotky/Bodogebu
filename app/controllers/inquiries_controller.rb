@@ -1,5 +1,7 @@
 class InquiriesController < ApplicationController
 
+  before_action :require_admin, only: [:index]
+
   def new
       @inquiry = Inquiry.new
   end
@@ -40,6 +42,18 @@ class InquiriesController < ApplicationController
 
       def params_inquiry
           params.require(:inquiry).permit(:title, :body, :user_id)
+      end
+
+      def require_admin
+              if user_signed_in?
+
+                  if current_user.admin?
+                  else
+                     redirect_to root_path
+                  end
+              else
+                redirect_to root_path
+              end
       end
 
 
