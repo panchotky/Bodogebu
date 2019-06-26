@@ -1,7 +1,7 @@
 <div class="container">
 
 	<div class="row text-center show-title">
-		<h2><%= @game.name %></h2>
+		<h2><%= @game.name %>
     </div>
 
 
@@ -108,7 +108,7 @@
 	    	<p>平均プレイ時間：<%= play_time_avarage(@game) %>分</p>
 	    	<% if @game.team == true %>
 	    		<p>プレイ種別：チーム戦</p>
-	    	<else>
+	    	<% else %>
 	    		<p>プレイ種別：個人戦</p>
 	    	<% end %>
 
@@ -120,6 +120,16 @@
 	    <div class="col-lg-3">
 	    </div>
     </div>
+
+    <% if user_signed_in? && current_user.admin? %>
+        <div class="row edit-btn">
+            <div class="col-lg-3">
+            </div>
+            <%= link_to "基本情報編集", edit_game_path(@game.id), class: "btn btn-success col-lg-6" %>
+            <div class="col-lg-3">
+            </div>
+        </div>
+    <% end %>
 
 
 </div>
