@@ -29,13 +29,17 @@
       <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
       <h4 class="modal-title">プレイ人数と時間を入力して下さい。</h4>
     </div>
-    <div class="modal-body">
-      <%= search_form_for search, url: games_search_path, class:"search form-inline" do |s| %>
-          <%= s.label :max_player_gteq, 'プレイ人数', class:"control-label" %>
-          <%= s.search_field :max_player_gteq, class:"form-control field", placeholder:"数は半角で入力して下さい。" %><br>
-          <%= s.label :time, 'プレイ時間', class:"control-label" %>
-          <%= s.search_field :time_lteq, class:"form-control field", placeholder:"数は半角で入力して下さい。" %>
-            <span class="input-group-btn"><%= button_tag sanitize('<i class="glyphicon glyphicon-search"></i>'), :type => "submit",:class =>"btn  btn-info" %></span>
+    <div class="modal-body text-center">
+      <%= search_form_for @time_search, url: games_search_path, class:"search form-inline" do |s| %>
+          <P>
+            <%= s.label :min_player, 'プレイ人数（人）', class:"control-label" %>
+            <%= s.search_field :min_player, class:"form-control field", placeholder:"数は半角で入力して下さい。" %>
+          </P>
+          <P>
+            <%= s.label :time, 'プレイ時間（分）', class:"control-label" %>
+            <%= s.search_field :time, class:"form-control field", placeholder:"数は半角で入力して下さい。" %>
+              <p><%= s.submit ("検索") , class: 'btn btn-primary' %></p>
+          </P>
       <% end %>
     </div>
     <div class="modal-footer">

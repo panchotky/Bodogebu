@@ -1,11 +1,15 @@
 <div class="container search-page-top">
 
   <div class="row search-word">
-		<h3>検索ワード：
-            <% if params[:q].present? && params[:q][:name_cont].present? %>
-			    <%= params[:q][:name_cont] %>
-			<% else %>
-			    記入なし（ゲーム名を入れて検索して下さい。）
+		<h3>検索条件：
+            <% if params[:q].present? && params[:q][:min_player].present? && params[:q][:time].present? %>
+			    <span>プレイ人数⇨<%= params[:q][:min_player] %>人　　プレイ時間⇨<%= params[:q][:time] %>分</span>
+			<% elsif params[:q].present? && params[:q][:min_player].present? %>
+                <span>プレイ人数⇨<%= params[:q][:min_player] %>人　　プレイ時間⇨指定なし</span>
+            <% elsif params[:q].present? && params[:q][:time].present? %>
+                <span>プレイ人数⇨指定なし　　プレイ時間⇨<%= params[:q][:time] %>分</span>
+            <% else %>
+			    記入なし（全てのゲームを表示しています。）
 			<% end %>
 	    </h3>
   </div>
@@ -13,7 +17,7 @@
 
   <div class="row">
   <!-- 検索結果が存在すれば、該当するものを一覧で表示する -->
-  <% if @search_games.present? %>
+  <% if @time_search_games.present? %>
       
       <table class="table search-game-table">
 		  	   <thead>
@@ -26,7 +30,7 @@
 		  	   	      </tr>
 		  	   </thead>
                
-               <% @games.each do |game| %>
+               <% @time_search_games.each do |game| %>
                <tbody>
 		  	   	      <tr>
 		  	   	      	  <th class="game-image">
