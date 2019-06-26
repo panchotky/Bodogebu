@@ -17,7 +17,7 @@
 	        <% @users.each do |user| %>
 		  	   <tbody>
 		  	   	      <tr>
-		  	   	      	  <th><%= attachment_image_tag user, :image, :fill, 80, 80, fallback: '/assets/no_image.jpg', size:'80x80' %></th>
+		  	   	      	  <th><%= attachment_image_tag user, :image, :fill, 80, 80, fallback: '/images/no_image.jpg', size:'80x80' %></th>
 		  	   	      	  <th><%= user.name %></th>
 		  	   	      	  <th> <%= link_to 'Library', user_path(user.id), class: "btn btn-success" %></th>
 		  	   	      	  <th><%= user.reviews.count %> 件</th>
