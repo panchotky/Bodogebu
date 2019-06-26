@@ -25,11 +25,12 @@
 
 		        
 			         <div class="inquiry-form">
+			         	  <%= f.radio_button :check, "false", {:checked => true} %> 未対応　
 					 	  <%= f.radio_button :check, "true", {:checked => false} %> 対応済み
 					 </div>
 
 			         <div class="inquiry-form">
-						 <%= f.submit "更新", class: "btn btn-default"%>
+						 <%= f.submit "更新", class: "btn btn-default" %>
 				     </div>
 			     <% end %>
 		    </div>

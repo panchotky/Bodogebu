@@ -132,6 +132,15 @@
 								 */
 								var myRadar = new Chart($("#<%= favorite.game.id %>"), config);
 	                           </script>
+
+	                           <% if favorite.game.team == true %>
+		                           <div class="text-center team-label">チーム</div>
+		                           </div>
+		                       <% else %>
+		                           <div class="text-center alone-label">個人</div>
+		                           </div>
+		                       <% end %>
+
 	                           </div>
 		  	   	      	  </th>
 		  	   	      	  <th><%= recommend_avarage(favorite.game) %></th>

@@ -1,10 +1,11 @@
+<body class="sign-in">
 <div class="container">
 <div class="row text-center">
 
   <div class="col-lg-3">
   </div>
 
-  <div class="col-lg-6 shadow-box">
+  <div class="col-lg-6 shadow-box white">
     <h2>会員登録</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -42,4 +43,5 @@
 
 </div>
 </div>
+</body>
 <%= render 'games/modal_dialog', search: @search %>
