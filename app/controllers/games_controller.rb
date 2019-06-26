@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   def top
   end
 
@@ -9,6 +10,7 @@ class GamesController < ApplicationController
 
   def create
       @game = Game.new(game_params)
+      p params
       if @game.save
        redirect_to new_game_review_path(@game.id)
       else
@@ -21,6 +23,7 @@ class GamesController < ApplicationController
   end
 
   def search_name
+    p params
       @game = Game.new
   end
 
@@ -48,7 +51,7 @@ class GamesController < ApplicationController
   private
 
     def game_params
-          params.require(:game).permit(:name, :min_player, :max_player, :image, :team)
+          params.require(:game).permit(:name, :min_player, :max_player, :image, :team, :time)
     end
 
 end

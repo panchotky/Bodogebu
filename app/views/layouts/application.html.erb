@@ -29,7 +29,7 @@
           
             <li class="link-btn"><a data-toggle="modal" data-target="#review-modal" class="btn-text-3d">レビュー</a></li>
 
-            <li class="link-btn"><a href="/users/:id" class="btn-text-3d">ライブラリ</a></li>
+            <li class="link-btn"><a href="/users/<%= current_user.id %>" class="btn-text-3d">ライブラリ</a></li>
           </ul>
 
            <% if user_signed_in? && current_user.admin == false %><!--ユーザがログインしたとき-->

@@ -29,8 +29,13 @@
 			  	   	      <tr>
 			  	   	      	  <th><%= attachment_image_tag game, :image, :fill, 100, 100 %></th>
 			  	   	      	  <th><%= game.name %></th>
-			  	   	      	  <th> <%= link_to 'このゲーム', new_game_review_path(game.id), class: "btn btn-success btn-xs" %></th>
-			  	   	      </tr>
+			  	   	      	  <% if game.reviews.where(user_id: current_user.id).present? %>
+			  	   	      	    <th> <%= link_to 'レビュー済', new_game_review_path(game.id), class: "btn btn-danger" %></th>
+			  	   	      	  <% else %>
+			  	   	      	    <th> <%= link_to 'このゲーム', new_game_review_path(game.id), class: "btn btn-success" %></th>
+			  	   	      	  <% end %>
+
+			  	   	      </tr> 
 			  	</tbody>
 		   	<% end %>
 		  </table>
