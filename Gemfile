@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.3.8'
+ruby '2.5.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -36,6 +36,11 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+group :production do
+  gem 'json'
+  gem 'mysql2'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -67,7 +72,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
  #ユーザ管理機能実装用
  gem 'devise'
  #JQuery導入
- gem 'jquery-rails'
+ # gem 'jquery-rails'
 #検索機能実装用
  gem 'ransack'
 #Viewレイアウト用
@@ -78,6 +83,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pry-byebug', group: :development
 gem 'pry-rails'
 gem 'chart-js-rails', '~> 0.1.4'
-gem 'json'
-gem 'mysql2'
 gem 'listen', '>= 3.0.5', '< 3.2'
