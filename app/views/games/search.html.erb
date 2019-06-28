@@ -3,11 +3,11 @@
   <div class="row search-word">
 		<h3>検索条件：
             <% if params[:q].present? && params[:q][:min_player].present? && params[:q][:time].present? %>
-			    <span>プレイ人数⇨<%= params[:q][:min_player] %>人　　プレイ時間⇨<%= params[:q][:time] %>分</span>
+			    <span>プレイ人数⇨<%= params[:q][:min_player] %>人　　プレイ時間⇨<%= params[:q][:time] %>分以内</span>
 			<% elsif params[:q].present? && params[:q][:min_player].present? %>
                 <span>プレイ人数⇨<%= params[:q][:min_player] %>人　　プレイ時間⇨指定なし</span>
             <% elsif params[:q].present? && params[:q][:time].present? %>
-                <span>プレイ人数⇨指定なし　　プレイ時間⇨<%= params[:q][:time] %>分</span>
+                <span>プレイ人数⇨指定なし　　プレイ時間⇨<%= params[:q][:time] %>分以内</span>
             <% else %>
 			    記入なし（全てのゲームを表示しています。）
 			<% end %>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container library-back-image">
 
 	<div class="row text-center">
 		<h2><%= @user.name %> の Library</h2>
@@ -8,9 +8,9 @@
        <div class="col-lg-2">
        </div>
 
-       <div class="col-lg-8 my-info shadow-box">
+       <div class="col-lg-8 my-info myinfo-box">
        	 <div class="float">
-       		 <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: '/images/no_image.jpg', size:'100x100' %>
+       		 <%= attachment_image_tag @user, :image, :fill, 130, 130, fallback: '/images/no_image.jpg', size:'130x130' %>
        	 </div>
        	 <div class="float">
        		 <p>紹介文</p>
@@ -24,7 +24,9 @@
        <div class="col-lg-2">
        </div>
     </div>
+</div>
 
+<div class="container">
     <div class="row">
 		<div class="wrap">
 			<div id="tab-menu" class="clearfix">

@@ -11,6 +11,9 @@
           <%= f.label :name_cont, 'ゲーム名（部分検索可）', class:"control-label" %>
           <%= f.search_field :name_cont, class:"form-control field", placeholder:"英数は半角で入力して下さい。" %>
             <span class="input-group-btn"><%= button_tag sanitize('<i class="glyphicon glyphicon-search"></i>'), :type => "submit",:class =>"btn  btn-info" %></span>
+          <p class="caption text-center">
+            ※英語表記のものは読みを<span class="important-text">カタカナで入力</span>してください。
+          </p>
       <% end %>
     </div>
     <div class="modal-footer">
@@ -38,6 +41,7 @@
           <P>
             <%= s.label :time, 'プレイ時間（分）', class:"control-label" %>
             <%= s.search_field :time, class:"form-control field", placeholder:"数は半角で入力して下さい。" %>
+            <p class="caption text-center">※プレイ時間は、<span class="important-text">検索時間内</span>のゲームを近い順に表示します。</p>
               <p><%= s.submit ("検索") , class: 'btn btn-primary' %></p>
           </P>
       <% end %>
