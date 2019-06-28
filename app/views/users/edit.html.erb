@@ -1,3 +1,4 @@
+<body class="back-image">
 <div class="container">
 
 	<div class="row text-center">
@@ -20,15 +21,15 @@
 		<div class="col-lg-2">
 		</div>
 
-		<div class="col-lg-8 shadow-box">
+		<div class="col-lg-8 shadow-box white">
             <%= form_for(@user)do |f| %>
                 <%=f.label :name, 'ニックネーム' %>
-            	<%= f.text_field :name, class: "form-margin form-control", placeholder:"ニックネームを入力して下さい。" %>
+            	<%= f.text_field :name, class: "form-margin form-control form-text", placeholder:"ニックネームを入力して下さい。" %>
             	<%=f.label :image, 'ユーザー画像' %>
             	<%= f.attachment_field :image, class: "image form-margin", id: "file" %>
                 <div id="img_field" onClick="$('#file').click()" ></div>
                 <%=f.label :introduce, '紹介文' %>
-            	<%= f.text_area :introduce, class: "form-margin form-control", placeholder:"紹介文を入力して下さい。" %>
+            	<%= f.text_area :introduce, class: "form-margin form-control form-text", placeholder:"紹介文を入力して下さい。" %>
 
                 <%= f.submit "ユーザー情報編集", class: "btn btn-primary"%>
             <% end %>
@@ -37,3 +38,5 @@
 		<div class="col-lg-2">
 		</div>
 	</div>
+</div>
+</body>

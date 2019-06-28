@@ -1,3 +1,4 @@
+<body class="back-image">
 <div class="container">
 	<div class="row">
 
@@ -5,7 +6,7 @@
 		</div>
 
         <div class="col-lg-8">
-			<div class="row text-center shadow-box">
+			<div class="row text-center shadow-box white">
 		       <h2>お問い合わせ入力フォーム</h2>
 
 		       <% if @inquiry.errors.any? %>
@@ -22,7 +23,7 @@
 		       <%= form_for @inquiry, :url => inquiries_confirm_path do |f| %>
 		         <div class="inquiry-form">
 					 <%= f.label :title, "タイトル" %>
-					 <%= f.text_field :title, class: "form-control" %>
+					 <%= f.text_field :title, class: "form-control inquiry-title" %>
 				 </div>
 			     <div class="inquiry-form">
 					 <%= f.label :body, "本文" %>
@@ -40,4 +41,5 @@
 
 	</div>
 </div>
+</body>
 <%= render 'games/modal_dialog', search: @search %>

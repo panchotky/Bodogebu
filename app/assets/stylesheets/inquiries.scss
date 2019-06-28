@@ -4,14 +4,28 @@
 
 .inquiry-form {
 	margin: 30px auto;
+	color: white;
 }
 
 input[type="text"] {
-        width: 100% !important;
+        width: 100px !important;
         height: 40px;
         border-radius: 4px;
     }
 
 .inquiry-table {
 	font-size: 17px;
+}
+
+.inquiry-title {
+	position: relative;
+	left: 35%;
+}
+
+.thanks-message {
+	margin-top: 200px !important;
+}
+
+.container {
+	height: 500px;
 }
