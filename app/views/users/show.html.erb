@@ -46,7 +46,7 @@
 		  	   	      <tr>
 		  	   	      	  <th>ゲーム名</th>
 		  	   	      	  <th>ゲーム特性</th>
-		  	   	      	  <th>おすすめ度</th>
+		  	   	      	  <th>おすすめ度(1~5)</th>
 		  	   	      	  <th>プレイ可能人数</th>
 		  	   	      	  <th>平均プレイ時間</th>
 		  	   	      </tr>
@@ -176,7 +176,18 @@
 
 </div>
 
-<!-- tabのjs読み込み -->
-<%= javascript_include_tag "application.js" %>
 <!-- headerのモーダルダイアログ -->
 <%= render 'games/modal_dialog', search: @search %>
+
+<!-- タブの切り替え -->
+<script>
+$('#tab-contents .tab[id != "tab1"]').hide();
+
+$('#tab-menu a').on('click', function() {
+  $("#tab-contents .tab").hide();
+  $("#tab-menu .active").removeClass("active");
+  $(this).addClass("active");
+  $($(this).attr("href")).show();
+  return false;
+});
+</script>
