@@ -1,11 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+* Name
+　"Bodogebu" ボードゲームのレビューサイトです。人数と時間を入力するだけでボードゲームを探すことができます。
+ 　ユーザーレビューから算出されたレーダーチャートからゲーム特性を事前に知ることができます。
+   また、レビューされたゲームがマイページに登録され、いつでも確認できます。
 
 * Ruby version
+  ruby '2.3.8'
+  
+* Usage
+  ヘッダーから検索、レビュー、ライブラリ（マイページ）にアクセスできます。
 
 * System dependencies
 
