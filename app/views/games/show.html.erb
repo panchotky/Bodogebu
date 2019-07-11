@@ -88,7 +88,7 @@
                 var myRadar = new Chart($("#<%= @game.id %>"), config);
              </script>
 
-            <a data-toggle="modal" data-target="#recommend-modal">
+            <a data-toggle="modal" data-target="#recommend-modal" style="cursor: pointer;" >
     		  <p>おすすめ度<%= recommend_avarage(@game) %>（<%= @game.reviews.count %>人）</p>
             </a>
     	</div>
@@ -112,7 +112,7 @@
 	    		<p>プレイ種別：個人戦</p>
 	    	<% end %>
 
-            <a data-toggle="modal" data-target="#comment-modal">
+            <a data-toggle="modal" data-target="#comment-modal" style="cursor: pointer;" >
 	          <p>コメント：（<%= @game.reviews.where.not(comment: "").count %>件）</p>
             </a>
 	    </div>

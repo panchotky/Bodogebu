@@ -5,11 +5,6 @@ class GamesController < ApplicationController
   def top
   end
 
-# ゲーム新規登録画面はレビュー検索結果に統合
-  # def new
-  #     @game = Game.new
-  # end
-
   def create
       @game = Game.new(game_params)
       p params
@@ -35,9 +30,6 @@ class GamesController < ApplicationController
   def show
       @game = Game.find(params[:id])
       @reviews = @game.reviews.all
-  end
-
-  def reviews
   end
 
   def edit

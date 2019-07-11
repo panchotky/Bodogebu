@@ -41,9 +41,6 @@ class ReviewsController < ApplicationController
       end
   end
 
-  def unification_view
-  end
-
   private
 
       def review_params
