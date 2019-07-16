@@ -37,6 +37,36 @@
 	</div>
 </div>
 
+<div class="container">
+	<div class="row">
+
+		<div class="col-lg-2">
+		</div>
+
+		<div class="col-lg-8 text-center">
+			<h3>新着ゲーム</h3>
+
+              <div class="row">
+                 <% @games.first(6).each do |game| %>
+                    <div class="col-lg-4">
+                    	<%= attachment_image_tag game, :image, :fill, 80, 80 %>
+                    </div>
+                 <% end %>
+
+              </div>
+
+		</div>
+
+
+
+		<div class="col-lg-2">
+		</div>
+
+	</div>
+</div>
+
+
+
 <!-- モーダル・ダイアログ -->
 <div class="modal fade" id="about-modal" tabindex="-1">
 	<div class="modal-dialog modal-lg">

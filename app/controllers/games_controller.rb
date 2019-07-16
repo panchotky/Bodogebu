@@ -3,6 +3,7 @@ class GamesController < ApplicationController
    before_action :require_admin, only: [:index, :edit, :update, :destroy]
 
   def top
+      @games = Game.all.order(created_at: "DESC")
   end
 
   def create
