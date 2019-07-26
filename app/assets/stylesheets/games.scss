@@ -84,6 +84,25 @@
 	border-bottom: solid 3px gray;
 }
 
+.new-games {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.under-bar {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 3px;
+    background-color: maroon;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.new-game-box {
+	margin: 5px;
+}
+
 
 // // 探す結果表示画面
 
@@ -144,6 +163,25 @@
 	left: 35%;
 }
 
+// レスポンシブ対応
+
+// TOP画面
+@media screen and (max-width:425px) {
+.top_title {
+    display: none;
+    }
+
+
+.about_link {
+	width: 100%;
+	margin-left: 22%;
+}
+
+.item {
+	height: 300px;
+}
+
+}
 
 
 
